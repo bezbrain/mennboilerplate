@@ -4,11 +4,11 @@
   "description": "\"boileplate for MENN projects\"",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && npx tsc",
+    "start": "node ./dist/index.js",
+    "dev": "cross-env nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
+    "build": "rimraf dist && tsc",
     "prestart": "npm run build",
-    "start": "node dist/index.js",
-    "predev": "npm run build",
-    "dev": " concurrently \"npx tsc -w\"  \"nodemon dist/index.js\""
+    "predev": "npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -26,5 +26,10 @@
     "mongoose": "^8.2.1",
     "rimraf": "^5.0.5",
     "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2"
   }
 }
